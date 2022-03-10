@@ -26,10 +26,31 @@ public class Main {
                 {-10, 35}
         };
 
-        String lowTempCity;
-        String highTempCity;
-        int lowTemp;
-        int highTemp;
+        String lowTempCity = "";
+        String highTempCity = "";
+        int lowTempCityIndex = 0;
+        int highTempCityIndex = 0;
+        int lowestTemp = temperatures[0][0];
+        int highestTemp = temperatures[0][1];
 
+        for (int i = 0; i < temperatures.length; i++) {
+            for (int j = 0; j < temperatures[i].length; j++) {
+                if (temperatures[i][j] < lowestTemp) {
+                    lowestTemp = temperatures[i][j];
+                    lowTempCityIndex = i;
+                }
+
+                if (temperatures[i][j] > highestTemp) {
+                    highestTemp = temperatures[i][j];
+                    highTempCityIndex = i;
+                }
+            }
+        }
+
+        lowTempCity = cities[lowTempCityIndex];
+        highTempCity = cities[highTempCityIndex];
+
+        System.out.println("A temperatura mais baixa foi em " + lowTempCity + " com " + lowestTemp + "º C.");
+        System.out.println("A temperatura mais alta foi em " + highTempCity + " com " + highestTemp + "º C.");
     }
 }
