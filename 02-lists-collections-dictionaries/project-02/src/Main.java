@@ -61,8 +61,32 @@ public class Main {
 
         inscricoes.add(participante);
         index = inscricoes.indexOf(inscricoes.get(inscricoes.size() - 1));
+        boolean isAdult = Integer.parseInt(participante.get("idade")) >= 18;
 
-        System.out.print("Categoria: ");
+        chooseCategorie(
+                scanner,
+                inscricoesCircuitoPequeno,
+                inscricoesCircuitoMedio,
+                inscricoesCircuitoAvancado,
+                index,
+                isAdult
+        );
+    }
+
+    public static void chooseCategorie(
+            Scanner scanner,
+            ArrayList<Integer> inscricoesCircuitoPequeno,
+            ArrayList<Integer> inscricoesCircuitoMedio,
+            ArrayList<Integer> inscricoesCircuitoAvancado,
+            int index,
+            boolean isAdult
+    ) {
+        System.out.println();
+        System.out.println("1 - Circuito pequeno");
+        System.out.println("2 - Circuito medio");
+        System.out.println("3 - Circuito avançado");
+        System.out.println();
+        System.out.print("Escolha uma categoria: ");
         String categoria = scanner.next();
 
         switch (categoria) {
@@ -73,10 +97,16 @@ public class Main {
                 inscricoesCircuitoMedio.add(index);
                 break;
             case "avancado":
-                inscricoesCircuitoAvancado.add(index);
+                if (isAdult) {
+                    inscricoesCircuitoAvancado.add(index);
+                } else {
+                    System.out.println("Deve ter 18 ou mais para participar deste circuito.");
+                }
                 break;
         }
+
     }
+
     public static void main(String[] args) {
         HashMap<String, String> participante = new HashMap<String, String>();
         ArrayList<HashMap<String, String>> inscricoes = new ArrayList<HashMap<String, String>>();
@@ -85,26 +115,38 @@ public class Main {
         ArrayList<Integer> inscricoesCircuitoAvancado = new ArrayList<Integer>();
         int index = 0;
         int answer;
+        int option;
 
         Scanner scanner = new Scanner(System.in);
 
         do {
-            createSubscription(
-                    scanner,
-                    participante,
-                    inscricoes,
-                    inscricoesCircuitoPequeno,
-                    inscricoesCircuitoMedio,
-                    inscricoesCircuitoAvancado,
-                    index
-            );
+            System.out.println();
+            System.out.println("1 - Inscrever participante");
+            System.out.println("2 - Mostrar cadastros de acordo com a categoria");
+            System.out.println("3 - Cancelar uma inscricao");
+            System.out.println("4 - Determinar o valor de uma inscricao");
+            System.out.println("0 - Encerrar");
+            System.out.print("Escolha uma opção: ");
+            option = scanner.nextInt();
 
-            System.out.print("\nDeseja realizar outro cadastro? (0 - Nao, 1 - Sim)");
-            answer = scanner.nextInt();
-        } while(answer == 1);
-
-        for (HashMap<String, String> inscricao : inscricoes) {
-            System.out.println(inscricao);
-        }
+            switch (option) {
+                case 1:
+                    do {
+                        createSubscription(
+                                scanner,
+                                participante,
+                                inscricoes,
+                                inscricoesCircuitoPequeno,
+                                inscricoesCircuitoMedio,
+                                inscricoesCircuitoAvancado,
+                                index
+                        );
+                        index++;
+                        System.out.print("\nDeseja realizar outro cadastro? (0 - Nao, 1 - Sim)");
+                        answer = scanner.nextInt();
+                    } while(answer == 1);
+                    break;
+            }
+        } while (option != 0);
     }
 }
