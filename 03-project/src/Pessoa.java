@@ -56,10 +56,10 @@ public class Pessoa {
     }
 
     public void infos() {
-        System.out.println(getNome());
-        System.out.println(getIdade());
-        System.out.println(getId());
-        System.out.println(getPeso());
-        System.out.println(getAltura());
+        System.out.println("Nome: " + getNome());
+        System.out.println("Idade: " + getIdade());
+        System.out.println("ID: " + getId());
+        System.out.println("Peso: " + getPeso() + "Kg");
+        System.out.println("Altura: " + getAltura() + "m");
     }
 }
