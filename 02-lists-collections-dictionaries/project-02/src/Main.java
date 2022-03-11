@@ -63,7 +63,7 @@ public class Main {
         index = inscricoes.indexOf(inscricoes.get(inscricoes.size() - 1));
         boolean isAdult = Integer.parseInt(participante.get("idade")) >= 18;
 
-        chooseCategorie(
+        chooseCategory(
                 scanner,
                 inscricoesCircuitoPequeno,
                 inscricoesCircuitoMedio,
@@ -73,7 +73,7 @@ public class Main {
         );
     }
 
-    public static void chooseCategorie(
+    public static void chooseCategory(
             Scanner scanner,
             ArrayList<Integer> inscricoesCircuitoPequeno,
             ArrayList<Integer> inscricoesCircuitoMedio,
@@ -81,29 +81,35 @@ public class Main {
             int index,
             boolean isAdult
     ) {
-        System.out.println();
-        System.out.println("1 - Circuito pequeno");
-        System.out.println("2 - Circuito medio");
-        System.out.println("3 - Circuito avançado");
-        System.out.println();
-        System.out.print("Escolha uma categoria: ");
-        String categoria = scanner.next();
+        int categoria;
 
-        switch (categoria) {
-            case "pequeno":
-                inscricoesCircuitoPequeno.add(index);
-                break;
-            case "medio":
-                inscricoesCircuitoMedio.add(index);
-                break;
-            case "avancado":
-                if (isAdult) {
-                    inscricoesCircuitoAvancado.add(index);
-                } else {
-                    System.out.println("Deve ter 18 ou mais para participar deste circuito.");
-                }
-                break;
-        }
+        do {
+            System.out.println();
+            System.out.println("1 - Circuito pequeno");
+            System.out.println("2 - Circuito medio");
+            System.out.println("3 - Circuito avançado");
+            System.out.println();
+            System.out.print("Escolha uma categoria: ");
+            categoria = scanner.nextInt();
+
+            switch (categoria) {
+                case 1:
+                    inscricoesCircuitoPequeno.add(index);
+                    break;
+                case 2:
+                    inscricoesCircuitoMedio.add(index);
+                    break;
+                case 3:
+                    if (isAdult) {
+                        inscricoesCircuitoAvancado.add(index);
+                    } else {
+                        System.out.println("\n\nDeve ter 18 ou mais para participar deste circuito.");
+                    }
+                    break;
+                default:
+                    System.out.println("Entre com uma opção válida");
+            }
+        } while (!isAdult && categoria == 3);
 
     }
 
@@ -142,7 +148,9 @@ public class Main {
                                 index
                         );
                         index++;
-                        System.out.print("\nDeseja realizar outro cadastro? (0 - Nao, 1 - Sim)");
+                        System.out.println("0 - Não");
+                        System.out.println("1 - Sim");
+                        System.out.print("Deseja realizar outro cadastro? ");
                         answer = scanner.nextInt();
                     } while(answer == 1);
                     break;
@@ -153,6 +161,7 @@ public class Main {
                 case 4:
                     break;
                 case 0:
+                    System.out.println("Finalizado!");
                     break;
                 default:
                     System.out.println("Digite uma opção válida");
