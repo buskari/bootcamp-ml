@@ -132,6 +132,14 @@ public class Main {
         }
     }
 
+    public static void cancelSubscription(
+            ArrayList<Integer> circuito,
+            ArrayList<HashMap<String, String>> inscricoes,
+            int id
+    ) {
+
+    }
+
     public static void main(String[] args) {
         HashMap<String, String> participante = new HashMap<String, String>();
         ArrayList<HashMap<String, String>> inscricoes = new ArrayList<HashMap<String, String>>();
@@ -211,6 +219,25 @@ public class Main {
                     } while (category != 0);
                     break;
                 case 3:
+                    do {
+                        System.out.print("Entre com o id da inscricao a ser cancelada: ");
+                        id = scanner.nextInt();
+                        --id;
+                        System.out.println(inscricoes.get(id));
+                        System.out.println(inscricoes.indexOf(id));
+                        if (!inscricoes.contains(id)) {
+                            System.out.println("Não existe uma inscrição com este id");
+                        }
+                    } while(!inscricoes.contains(id));
+                    inscricoes.remove(id);
+                    if (inscricoesCircuitoAvancado.contains(id)) {
+                        inscricoesCircuitoAvancado.remove(id);
+                    } else if (inscricoesCircuitoMedio.contains(id)) {
+                        inscricoesCircuitoMedio.remove(id);
+                    } else {
+                        inscricoesCircuitoPequeno.remove(id);
+                    }
+                    System.out.println("\nInscrição cancelada");
                     break;
                 case 4:
                     break;
