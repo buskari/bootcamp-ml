@@ -55,11 +55,7 @@ public class Pessoa {
         return altura;
     }
 
-    public void infos() {
-        System.out.println("Nome: " + getNome());
-        System.out.println("Idade: " + getIdade());
-        System.out.println("ID: " + getId());
-        System.out.println("Peso: " + getPeso() + "Kg");
-        System.out.println("Altura: " + getAltura() + "m");
+    public String toString() {
+        return "\nNome: " + getNome() + " \nIdade: " + getIdade() + "\nID: " + getId() + "\nPeso: " + getPeso() + "\nAltura: " + getAltura();
     }
 }

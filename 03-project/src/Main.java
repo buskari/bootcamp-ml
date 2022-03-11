@@ -19,8 +19,6 @@ public class Main {
             System.out.println("É MENOR de idade");
         }
 
-        System.out.println();
-        
-        andris.infos();
+        System.out.println(andris);
     }
 }
