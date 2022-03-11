@@ -146,6 +146,16 @@ public class Main {
                         answer = scanner.nextInt();
                     } while(answer == 1);
                     break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Digite uma opção válida");
             }
         } while (option != 0);
     }
