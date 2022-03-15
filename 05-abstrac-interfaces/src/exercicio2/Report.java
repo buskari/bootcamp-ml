@@ -1,6 +1,6 @@
 package exercicio2;
 
-public class Report {
+public class Report extends Document {
     private Integer textLength;
     private Integer pagesNumber;
     private String reviewer;
@@ -10,6 +10,7 @@ public class Report {
         Integer pagesNumber,
         String reviewer
     ) {
+        super(DocType.REPORT);
         this.textLength = textLength;
         this.pagesNumber = pagesNumber;
         this.reviewer = reviewer;
