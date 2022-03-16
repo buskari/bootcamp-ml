@@ -8,12 +8,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Fatura {
-    private Cliente cliente;
+public class Invoice {
+    private Client cliente;
     private List<Item> itens;
     private BigDecimal total = BigDecimal.ZERO;
 
-    public Fatura(Cliente cliente, List<Item> itens) {
+    public Invoice(Client cliente, List<Item> itens) {
         this.cliente = cliente;
         this.itens = itens;
         setTotal();

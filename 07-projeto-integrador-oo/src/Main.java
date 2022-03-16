@@ -5,13 +5,13 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Cliente> clientes = new ArrayList<>();
+        ArrayList<Client> clientes = new ArrayList<>();
         ArrayList<Item> itens = new ArrayList<>();
         String id;
 
-        Cliente fulano = new Cliente("1001", "fulano", "da silva");
-        Cliente ciclano = new Cliente("1002", "ciclano", "pereira");
-        Cliente beltrano = new Cliente("1003", "beltrano", "gonçalves");
+        Client fulano = new Client("1001", "fulano", "da silva");
+        Client ciclano = new Client("1002", "ciclano", "pereira");
+        Client beltrano = new Client("1003", "beltrano", "gonçalves");
 
         itens.add(
                 new Item("2000", "caderno", 1, BigDecimal.valueOf(29.90))
@@ -29,7 +29,7 @@ public class Main {
                 new Item("2004", "laptop", 1, BigDecimal.valueOf(3999.00))
         );
 
-        Fatura fatura = new Fatura(fulano, itens);
+        Invoice fatura = new Invoice(fulano, itens);
 
         clientes.add(fulano);
         clientes.add(ciclano);
@@ -43,7 +43,7 @@ public class Main {
         System.out.println("Entre com o ID do cliente: ");
         id = scanner.next();
 
-        for (Cliente cliente : clientes) {
+        for (Client cliente : clientes) {
             if (cliente.getId().equals(id)) {
                 System.out.println(cliente);
                 return;

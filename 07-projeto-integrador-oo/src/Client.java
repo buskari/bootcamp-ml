@@ -3,8 +3,9 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Cliente {
+public class Client {
     private String id;
     private String nome;
     private String sobrenome;
+
 }
