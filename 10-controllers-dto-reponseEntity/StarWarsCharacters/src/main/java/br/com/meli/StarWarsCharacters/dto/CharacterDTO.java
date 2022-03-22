@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import br.com.meli.StarWarsCharacters.entity.Character;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -16,4 +18,15 @@ public class CharacterDTO {
     private String gender;
     private String homeworld;
     private String species;
+
+    public static CharacterDTO convert(Character character) {
+        return new CharacterDTO(
+                character.getName(),
+                character.getHeight(),
+                character.getMass(),
+                character.getGender(),
+                character.getHomeworld(),
+                character.getSpecies()
+        );
+    }
 }
